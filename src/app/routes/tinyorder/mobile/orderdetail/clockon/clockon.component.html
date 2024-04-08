@@ -1,0 +1,39 @@
+<div class="modal-header">
+  <div class="modal-title">报工 {{ record.cWorkOrder }} 信息</div>
+</div>
+<div>
+  <label>计划数{{ record.iPlanQty }}</label>
+</div>
+<div>
+  <label>工艺路径->{{ record.cOpName }}</label>
+</div>
+<nz-spin *ngIf="!record" class="modal-spin"></nz-spin>
+<form nz-form #f="ngForm" se-container gutter="32">
+  <se label="合格数量" error="请填写数字" optionalHelp="合格数量">
+    <input
+      type="number"
+      nz-input
+      [(ngModel)]="record.iQtyGood"
+      name="iQtyGood"
+      required
+      maxlength="3"
+      pattern="^[0-9]*$"
+      placeholder="必填项，且只能包含0-9之间"
+    />
+  </se>
+  <se label="报废数据" error="请填写数字" optionalHelp="报废数据">
+    <input
+      type="number"
+      nz-input
+      [(ngModel)]="record.iQtyBad"
+      name="iQtyBad"
+      required
+      maxlength="3"
+      pattern="^[0-9]*$"
+      placeholder="必填项，且只能包含0-9之间"
+    />
+  </se>
+  <se>
+    <button nz-button nzType="primary" (click)="submit($event)">提交</button>
+  </se>
+</form>

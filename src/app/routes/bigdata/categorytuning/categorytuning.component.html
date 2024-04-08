@@ -1,0 +1,79 @@
+<div nz-row style="padding: 20px 20px 0 20px">
+  <div nz-row class="htitle"> BIG DATA TOOL </div>
+  <nz-divider></nz-divider>
+</div>
+<div nz-row class="subtitle"> 模型评估 </div>
+<div nz-row style="padding: 20px 20px 0 20px">
+  <div nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="16">
+    <div style="height: 400px; text-align: center; display: block; margin: 5px">
+      <img class="imgscale" nz-image src="assets/images/bigdata/category/caterst1.png" />
+    </div>
+    <div style="height: 400px; text-align: center; display: block; margin: 5px">
+      <img class="imgscale" nz-image src="assets/images/bigdata/category/caterst2.png" />
+    </div>
+    <div style="height: 400px; text-align: center; display: block; margin: 5px">
+      <img class="imgscale" nz-image src="assets/images/bigdata/category/caterst3.png" />
+    </div>
+    <div style="height: 400px; text-align: center; display: block; margin: 5px">
+      <img class="imgscale" nz-image src="assets/images/bigdata/category/caterst4.png" />
+    </div>
+    <div style="height: 400px; text-align: center; display: block; margin: 5px">
+      <img class="imgscale" nz-image src="assets/images/bigdata/category/caterst5.png" />
+    </div>
+    <div style="height: 400px; text-align: center; display: block; margin: 5px">
+      <img class="imgscale" nz-image src="assets/images/bigdata/category/caterst6.png" />
+    </div>
+  </div>
+
+  <div nz-col nzXs="24" nzSm="24" nzMd="8" nzLg="8">
+    <nz-timeline>
+      <nz-timeline-item>
+        <div><h3>模型使用数据集</h3></div>
+        <div style="height: 380px"> 对清洗后数据集进行归一化处理——削弱异常值，不同变量值域差距过大的影响。 </div>
+      </nz-timeline-item>
+      <nz-timeline-item>
+        <div><h3>混淆矩阵 </h3></div>
+        <div style="height: 380px">
+          <h3>混淆矩阵 </h3>
+          展示对结果变量的每种类型的预测值vs实际值，准确率=（对角数量之和）/（所有数量之和），但多数情况不能使用准确率作为评判标准，因为类的不均衡等问题。</div
+        >
+      </nz-timeline-item>
+      <nz-timeline-item>
+        <div><h3>ROC图像</h3></div>
+        <div style="height: 700px">
+          <h3>ROC图像</h3>
+          接受者操作特性曲线，接受者操作特性曲线就是以假阳性概率 (False Positive Rate) 为横轴，真阳性概率 (True Positive Rate)
+          为纵轴所组成的 坐标图，和被试在特定刺激条件下由于采用不同的判断标准得出的不同结果画出的曲线.
+          传统的诊断试验评价方法有一个共同的特点，必须将试验结果分为两类，再进行统计分析。
+          ROC曲线的评价方法与传统的评价方法不同，无须此限制，而是根据实际情况，允许有中间状态两种或两种以上不同诊断试验对疾病识别能力的比较。在对同一种疾病的两种或两种以上诊断方法进行比较时，可将各试验的ROC曲线绘制到同一坐标中，以直观地鉴别优劣，靠近左上角的ROC曲线所代表的受试者工作最准确。
+          亦可通过分别计算各个试验的ROC曲线下的面积 (AUC)进行比较，</div
+        >
+      </nz-timeline-item>
+      <nz-timeline-item>
+        <div><h3>变量重要性 </h3></div>
+        <div style="height: 380px">
+          <h3>变量重要性</h3>
+          通过计算树模型的节点的不纯比重，节点分割数据的概率，计算各个变量的重要性，重要性越高，分割数据的能力越强。</div
+        >
+      </nz-timeline-item>
+      <nz-timeline-item>
+        <div><h3>模型评估结果</h3></div>
+        <div style="height: 380px">
+          <h3>模型评估结果</h3>
+
+          常用的评估结果，这里分类型使用F-1作为衡量值，回归类型使用RMSE作为衡量值。</div
+        >
+      </nz-timeline-item>
+      <nz-timeline-item></nz-timeline-item>
+    </nz-timeline>
+  </div>
+  <nz-back-top></nz-back-top>
+</div>
+<div nz-row style="padding: 20px 20px 0 20px">
+  <div nz-col nzSpan="8" style="padding: 20px; display: block; text-align: center; margin: auto">
+    <button nz-button nzType="primary" routerLink="/bigdata/categorybuilder">上一步</button>
+  </div>
+  <div nz-col nzSpan="8" style="padding: 20px; display: block; text-align: center; margin: auto">
+    <button nz-button nzType="primary" routerLink="/bigdata/home">主页</button>
+  </div>
+</div>

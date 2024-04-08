@@ -1,0 +1,35 @@
+<page-header [action]="phActionTpl">
+  <ng-template #phActionTpl>
+    <button (click)="add()" nz-button nzType="primary">新建</button>
+  </ng-template>
+</page-header>
+<div nz-row nzGutter="24" class="py-lg">
+  <div nz-col nzMd="24" nzLg="4">
+    <nz-card nzBordered="false">
+      <nz-tree #nzTreeComponent [nzData]="orgnodes" [nzExpandAll]="'true'">
+        <!-- [nzCheckedKeys]="defaultCheckedKeys"
+[nzExpandedKeys]="defaultExpandedKeys"
+[nzSelectedKeys]="defaultSelectedKeys" -->
+      </nz-tree>
+    </nz-card>
+  </div>
+  <div nz-col nzMd="24" nzLg="20">
+    <nz-card nzBordered="false">
+      <sf mode="search" [schema]="searchSchema" (formSubmit)="conditionChange($event)" (formReset)="conditionChange($event)"></sf>
+      <st
+        #st
+        [widthMode]="{ type: 'strict' }"
+        [data]="data"
+        showSizeChanger
+        [total]="total"
+        [ps]="ps"
+        [noResult]="'no_data' | i18n"
+        [page]="pages"
+        [columns]="columns"
+        (change)="stChange($event)"
+      >
+        ></st
+      >
+    </nz-card>
+  </div>
+</div>

@@ -1,0 +1,89 @@
+<page-header [title]="tplTitle">
+  <ng-template #tplTitle>
+    <i nz-icon nzType="left" (click)="goback()"></i>
+    工单详情
+  </ng-template>
+</page-header>
+<nz-affix style="position: absolute; bottom: 20px; right: 10px; z-index: 2147483640">
+  <a
+    nz-dropdown
+    [nzDropdownMenu]="menu"
+    class="ant-dropdown-trigger ant-avatar ant-avatar-circle ant-avatar-icon"
+    style="width: 48px; height: 48px; line-height: 48px"
+  >
+    <i nz-icon nzType="appstore" style="font-size: 24px"></i>
+  </a>
+  <nz-dropdown-menu #menu="nzDropdownMenu">
+    <ul nz-menu nzSelectable>
+      <li nz-menu-item routerLink="/tinyorder/mobile/order">工单</li>
+      <li nz-menu-item routerLink="/tinyorder/mobile/summary">统计</li>
+    </ul>
+  </nz-dropdown-menu>
+</nz-affix>
+
+<div class="container scrollbar">
+  <nz-card *ngIf="record">
+    <div nz-row nzGutter="24">
+      <div nz-col nzMd="24" nzLg="20">
+        <div
+          >工单号 <i class="torder">{{ record.cWorkOrder }}</i></div
+        >
+        <div> 产品编号 {{ record.cPartNumber }}</div>
+      </div>
+      <div nz-col nzMd="24" nzLg="4">
+        <div class="otitle">{{ record.iStatus == 1 ? '执行中' : '未开始' }}</div>
+        <div class="otitle">优先级：{{ record.iPriority }}</div>
+      </div>
+    </div>
+    <div nz-row nzGutter="24">
+      <div nz-col nzMd="24">
+        <div
+          >计划数 <i class="torder">{{ record.iPlanQty }}</i></div
+        >
+        <div
+          >客户名称 <i class="torder">{{ record.cCustomerName }}</i></div
+        >
+      </div>
+      <div> </div>
+    </div>
+  </nz-card>
+  <nz-card nz-col nzMd="24" [nzTitle]="tplCardTitle" [nzExtra]="tplExtra">
+    <nz-steps [nzCurrent]="3" nzDirection="vertical">
+      <nz-step
+        *ngFor="let dataop of record.Mes_WorkOrderDetail"
+        [nzDescription]="tplContent"
+        nzTitle="{{ dataop.cOpName }}"
+        nzSubtitle=" {{ dataop.cOpDescription }}"
+        nzStatus="{{ dataop.iStatus == 1 ? 'process' : 'finish' }}"
+      >
+        <ng-template #tplContent let-title="title">
+          <div nz-row nzGutter="24">
+            <div nz-col nzMd="6">
+              <div class="factorname">{{ dataop.iPlanQty }}</div>
+              <div class="factorvalue">计划数</div>
+            </div>
+            <div nz-col nzMd="6">
+              <div class="factorname">{{ dataop.iQtyGood }}</div>
+              <div class="factorvalue">良品数</div>
+            </div>
+            <div nz-col nzMd="6">
+              <div class="factorname">{{ dataop.iQtyBad }}</div>
+              <div class="factorvalue">不良数</div>
+            </div>
+            <div nz-col nzMd="6" style="text-align: right">
+              <button nz-button nzType="primary" (click)="clockon(dataop)">
+                <span>报工</span>
+              </button>
+            </div>
+          </div>
+        </ng-template>
+      </nz-step>
+    </nz-steps>
+    <ng-template #tplCardTitle>
+      <div class="otitle">工艺路线与生产进度</div>
+    </ng-template>
+    <ng-template #tplExtra>
+      <div class="otitle">如下</div>
+    </ng-template>
+  </nz-card>
+</div>

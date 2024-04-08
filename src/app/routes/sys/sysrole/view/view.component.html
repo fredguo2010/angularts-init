@@ -1,0 +1,13 @@
+<div class="modal-header">
+  <div class="modal-title">查看 {{ record.cRoleName }} 信息</div>
+</div>
+<nz-spin *ngIf="!record" class="modal-spin"></nz-spin>
+<div sv-container *ngIf="record">
+  <sv label="编码">{{ record.cRoleCode }}</sv>
+  <sv label="角色">{{ record.cRoleName }}</sv>
+  <sv label="描述">{{ record.cDescription }}</sv>
+  <sv label="新建时间">{{ record.dAddTime }}</sv>
+</div>
+<div class="modal-footer">
+  <button nz-button type="button" (click)="close()">关闭</button>
+</div>

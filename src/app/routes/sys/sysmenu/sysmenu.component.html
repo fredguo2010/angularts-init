@@ -1,0 +1,39 @@
+<page-header [title]="'菜单管理'" [action]="action"> </page-header>
+<ng-template #action>
+  <button (click)="add()" nz-button nzType="primary">{{ 'sf.add' | i18n }}</button>
+</ng-template>
+<div nz-row nzGutter="24">
+  <div nz-col nzMd="24" nzLg="4">
+    <nz-card nzBordered="false">
+      <nz-tree #nzTreeComponent [nzData]="menunodes" [nzExpandAll]="'true'" (nzClick)="treeClick($event)">
+        <!-- [nzCheckedKeys]="defaultCheckedKeys"
+      [nzExpandedKeys]="defaultExpandedKeys"
+      [nzSelectedKeys]="defaultSelectedKeys" -->
+      </nz-tree>
+    </nz-card>
+  </div>
+  <div nz-col nzMd="24" nzLg="20">
+    <nz-card nzBordered="false">
+      <sf mode="search" [schema]="searchSchema" (formSubmit)="conditionChange($event)" (formReset)="conditionChange($event)"></sf>
+      <st
+        #st
+        [widthMode]="{ type: 'strict', strictBehavior: 'truncate' }"
+        [data]="data"
+        showSizeChanger
+        [total]="total"
+        [ps]="ps"
+        [noResult]="'no_data' | i18n"
+        [page]="pages"
+        [columns]="columns"
+        (change)="stChange($event)"
+        [loading]="loading"
+      >
+        <ng-template st-row="status" let-i>
+          <nz-badge
+            [nzStatus]="i.status == 0 ? 'default' : 'processing'"
+            [nzText]="i.status == 0 ? '停用' : '启用'"
+          ></nz-badge> </ng-template
+      ></st>
+    </nz-card>
+  </div>
+</div>

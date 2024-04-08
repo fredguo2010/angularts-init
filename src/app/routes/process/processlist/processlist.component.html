@@ -1,0 +1,42 @@
+<page-header title="工艺流程" [content]="contentTpl">
+  <ng-template #contentTpl>
+    <nz-input-number [(ngModel)]="processNumber" [nzMin]="1" [nzMax]="10" [nzStep]="1" (ngModelChange)="change()"></nz-input-number>
+  </ng-template>
+</page-header>
+<div style="background: #ececec; padding: 30px">
+  <div nz-row [nzGutter]="8">
+    <div nz-col [nzSpan]="3" *ngFor="let data of listOfData">
+      <div *ngFor="let datachild of data">
+        <nz-card
+          nzTitle="工段{{ datachild.processnumber }}"
+          nz-popover
+          [nzPopoverTitle]="titleTemplate"
+          [nzPopoverContent]="contentTemplate"
+          [nzExtra]="extraTpl"
+        >
+          <ng-template #extraTpl>
+            <button nz-button nzType="primary">查看</button>
+          </ng-template>
+          <i nz-icon nzType="check"></i>
+          --->{{ datachild.processnumber }}
+          <img nz-image width="200px" height="200px" nzSrc="./assets/process/images/{{ datachild.processimg }}" alt="" />
+          <ng-template #titleTemplate>
+            <i nz-icon nzType="check"></i>
+            静态数据
+          </ng-template>
+          <ng-template #contentTemplate>
+            <div style="width: 300px">
+              <nz-descriptions [nzColumn]="1" nzTitle="Process Info">
+                <nz-descriptions-item nzTitle="ProcessName">Zhou Maomao</nz-descriptions-item>
+                <nz-descriptions-item nzTitle="Processhone">18100000000</nz-descriptions-item>
+                <nz-descriptions-item nzTitle="Process">Hangzhou, Zhejiang</nz-descriptions-item>
+                <nz-descriptions-item nzTitle="Process">Empty</nz-descriptions-item>
+                <nz-descriptions-item nzTitle="Address">Zhejiang, China </nz-descriptions-item>
+              </nz-descriptions>
+            </div>
+          </ng-template>
+        </nz-card>
+      </div>
+    </div>
+  </div>
+</div>

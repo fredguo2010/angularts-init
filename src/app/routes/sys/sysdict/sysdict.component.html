@@ -1,0 +1,48 @@
+<page-header [title]="'字典维护'" [action]="action"></page-header>
+<ng-template #action>
+  <button (click)="add()" nz-button nzType="primary">新建</button>
+
+  <nz-divider nzType="vertical"></nz-divider>
+
+  <nz-upload [nzAction]="uploadAction()" (nzChange)="handleChange($event)" [nzAccept]="accept" nzShowUploadList="false">
+    <button nz-button nzType="primary">
+      <span nz-icon nzType="upload"></span>
+      导入CSV数据文件
+    </button>
+  </nz-upload>
+
+  <nz-divider nzType="vertical"></nz-divider>
+
+  <button (click)="exportCsv()" [disabled]="!data.length" nz-button><span nz-icon nzType="download"></span>导出数据</button>
+
+  <nz-divider nzType="vertical"></nz-divider>
+
+  <button nz-button (click)="getData()"><span nz-icon nzType="reload" nzTheme="outline"></span></button>
+</ng-template>
+<nz-card nzBordered="false">
+  <sf mode="search" [schema]="searchSchema" (formSubmit)="conditionChange($event)" (formReset)="conditionChange($event)"></sf>
+  <st
+    #st
+    [widthMode]="{ type: 'strict', strictBehavior: 'truncate' }"
+    [data]="data"
+    showSizeChanger
+    [total]="total"
+    [ps]="ps"
+    [noResult]="nodata"
+    [page]="pages"
+    [columns]="columns"
+    (change)="stChange($event)"
+    [widthMode]="{ type: 'strict' }"
+    resizable
+  >
+    <ng-template st-row="status" let-i>
+      <nz-badge [nzStatus]="i.iStatus == 0 ? 'default' : 'processing'" [nzText]="i.iStatus == 0 ? '停用' : '启用'"></nz-badge>
+    </ng-template>
+
+    <ng-template #nodata>
+      <div>
+        <img src="assets/images/no-data.jpg" height="300" />
+      </div>
+    </ng-template>
+  </st>
+</nz-card>

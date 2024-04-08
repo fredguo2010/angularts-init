@@ -1,0 +1,15 @@
+<div class="modal-header">
+  <div class="modal-title">查看 {{ record.cOrgName }} 信息</div>
+</div>
+<nz-spin *ngIf="!record" class="modal-spin"></nz-spin>
+<div sv-container *ngIf="record">
+  <sv label="日期">{{ dDate }}</sv>
+  <sv label="编码">{{ record.cOrgCode }}</sv>
+  <sv label="企业">{{ record.cOrgName }}</sv>
+  <sv label="装置">{{ record.cAssetName }}</sv>
+  <sv label="产量">{{ record.iProd }}</sv>
+  <sv label="产量">{{ record.iProd }}</sv>
+</div>
+<div class="modal-footer">
+  <button nz-button type="button" (click)="close()">关闭</button>
+</div>

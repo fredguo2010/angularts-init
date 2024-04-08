@@ -1,0 +1,68 @@
+<nz-affix style="position: absolute; bottom: 20px; right: 10px; z-index: 2147483640">
+  <a
+    nz-dropdown
+    [nzDropdownMenu]="menu"
+    class="ant-dropdown-trigger ant-avatar ant-avatar-circle ant-avatar-icon"
+    style="width: 48px; height: 48px; line-height: 48px"
+  >
+    <i nz-icon nzType="appstore" style="font-size: 24px"></i>
+  </a>
+  <nz-dropdown-menu #menu="nzDropdownMenu">
+    <ul nz-menu nzSelectable>
+      <li nz-menu-item routerLink="/tinyorder/mobile/order">工单</li>
+      <li nz-menu-item routerLink="/tinyorder/mobile/summary">统计</li>
+    </ul>
+  </nz-dropdown-menu>
+</nz-affix>
+<div class="py-sm px-md mt0 card flex-center-between">
+  <div>
+    <nz-radio-group [(ngModel)]="status" nzButtonStyle="outline" (ngModelChange)="switchstatus($event)">
+      <label nz-radio-button nzValue="0">未开始</label>
+      <label nz-radio-button nzValue="1">执行中</label>
+      <label nz-radio-button nzValue="2">已结束</label>
+      <label nz-radio-button nzValue="3">已取消</label>
+    </nz-radio-group>
+  </div>
+</div>
+<div class="container scrollbar">
+  <div nz-row nzGutter="16">
+    <div *ngFor="let datachild of data" nz-col nzMd="24" nzLg="8">
+      <nz-card [nzTitle]="tplTitle" [nzExtra]="tplExtra">
+        <div nz-card-grid [ngStyle]="gridStyle33" class="factordiv">
+          <div class="factorname">{{ datachild.iPlanQty }}</div>
+          <div class="factorvalue">计划数</div>
+        </div>
+        <div nz-card-grid [ngStyle]="gridStyle33" class="factordiv">
+          <div class="factorname">{{ datachild.iQtyGood }}</div>
+          <div class="factorvalue">良品数</div>
+        </div>
+        <div nz-card-grid [ngStyle]="gridStyle33" class="factordiv">
+          <div class="factorname">{{ datachild.iQtyBad }}</div>
+          <div class="factorvalue">不良数</div>
+        </div>
+        <div nz-card-grid [ngStyle]="gridStyle" class="factordiv" (click)="goDetail(datachild.cGuid)">
+          <nz-steps nzLabelPlacement="vertical" [nzCurrent]="2">
+            <nz-step
+              *ngFor="let dataop of datachild.Mes_WorkOrderDetail"
+              nzTitle="{{ dataop.cOpName }}"
+              nzStatus="{{ dataop.iStatus == 1 ? 'process' : 'finish' }}"
+            ></nz-step>
+          </nz-steps>
+        </div>
+
+        <ng-template #tplTitle>
+          <div class="otitle"
+            >工单号 <i class="torder">{{ datachild.cWorkOrder }}</i></div
+          >
+          <div class="otitle">产品编号 {{ datachild.cPartNumber }}</div>
+        </ng-template>
+
+        <ng-template #tplExtra>
+          <div class="otitle">{{ datachild.iStatus == 1 ? '执行中' : '未开始' }}</div>
+          <div class="otitle">优先级： {{ datachild.iPriority }}</div>
+        </ng-template>
+      </nz-card>
+    </div>
+  </div>
+</div>
+<nz-back-top></nz-back-top>

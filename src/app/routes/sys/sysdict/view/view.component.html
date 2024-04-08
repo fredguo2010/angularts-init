@@ -1,0 +1,17 @@
+<div class="modal-header">
+  <div class="modal-title">查看 {{ record.id }} 信息</div>
+</div>
+<nz-spin *ngIf="!record" class="modal-spin"></nz-spin>
+<div sv-container *ngIf="record">
+  <sv label="名称">{{ record.cName }}</sv>
+  <sv label="值">{{ record.cValue }}</sv>
+  <sv label="分类">{{ record.cCategory }}</sv>
+  <sv label="创建人">{{ record.cCreateUserName }}</sv>
+  <sv label="创建时间">{{ record.dCreateTime ? formatDate(record.dCreateTime, 'yyyy-MM-dd hh:mm:ss', 'zh-CN') : '-' }}</sv>
+  <sv label="修改人">{{ record.cModifyUserName }}</sv>
+  <sv label="修改日期">{{ record.dModifyTime ? formatDate(record.dModifyTime, 'yyyy-MM-dd hh:mm:ss', 'zh-CN') : '-' }}</sv>
+  <sv label="描述">{{ record.cMemo }}</sv>
+</div>
+<div class="modal-footer">
+  <button nz-button type="button" (click)="close()">关闭</button>
+</div>

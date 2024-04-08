@@ -1,0 +1,41 @@
+<page-header [action]="phActionTpl">
+  <ng-template #phActionTpl>
+    <nz-date-picker [(ngModel)]="date" (ngModelChange)="onChange($event)"></nz-date-picker>
+    <button (click)="addinit()" nz-button nzType="primary" [disabled]="qpp.cOrgGuid == ''">初始化</button>
+  </ng-template>
+</page-header>
+<div nz-row nzGutter="24" class="py-lg">
+  <div nz-col nzMd="24" nzLg="4">
+    <nz-card nzBordered="false">
+      <nz-tree #nzTreeComponent [nzData]="orgnodes" [nzExpandAll]="'true'" (nzClick)="treeClick($event)">
+        <!-- [nzCheckedKeys]="defaultCheckedKeys"
+[nzExpandedKeys]="defaultExpandedKeys"
+[nzSelectedKeys]="defaultSelectedKeys" -->
+      </nz-tree>
+    </nz-card>
+  </div>
+  <div nz-col nzMd="24" nzLg="20">
+    <nz-card nzBordered="false">
+      <sf mode="search" [schema]="searchSchema" (formSubmit)="conditionChange($event)" (formReset)="conditionChange($event)"></sf>
+      <st
+        #st
+        [widthMode]="{ type: 'strict' }"
+        [data]="data"
+        showSizeChanger
+        [total]="total"
+        [ps]="ps"
+        [noResult]="'no_data' | i18n"
+        [page]="pages"
+        [columns]="columns"
+        (change)="stChange($event)"
+        [loading]="loading"
+      >
+        <ng-template st-row="status" let-i>
+          <nz-badge
+            [nzStatus]="i.status == 0 ? 'default' : 'processing'"
+            [nzText]="i.status == 0 ? '停用' : '启用'"
+          ></nz-badge> </ng-template
+      ></st>
+    </nz-card>
+  </div>
+</div>

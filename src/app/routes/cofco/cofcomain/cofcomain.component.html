@@ -1,0 +1,98 @@
+<div class="block_header flex-row">
+  <div nz-row nzGutter="24">
+    <div nz-col nzXs="24" nzSm="24" nzMd="6" style="text-align: left" class="headertxt">{{ cdate }}</div>
+    <div nz-col nzXs="24" nzSm="24" nzMd="12" style="text-align: center" class="headercentxt">中粮生物科技数据看板</div>
+    <div nz-col nzXs="24" nzSm="24" nzMd="6" style="text-align: right" class="headertxt">温度:25/14℃ 湿度：16% </div>
+  </div>
+</div>
+
+<div nz-row nzGutter="24">
+  <div nz-col nzXs="24" nzSm="24" nzMd="6" style="padding: 0px 42px !important">
+    <nz-card [nzTitle]="titleProd" [nzBordered]="false">
+      <ng-template #titleProd>
+        <div class="block_header_slide flex-col"> <span>当日生产情况 </span></div></ng-template
+      >
+      <nz-carousel nzAutoPlay (nzAfterChange)="afterChange($event)">
+        <div style="height: calc(25vh - 57px)" nz-carousel-content *ngFor="let index of prodsummaryarray">
+          <nz-card nzBordered="false">
+            <div style="display: 'flex'">
+              <div nz-card-grid [ngStyle]="gridStyle">
+                <div class="cardheader">企业名称</div>
+                <div class="cardheadertxt">{{ index.cOrgName }}</div>
+                <div class="cardheader">产品</div>
+                <div class="cardheadertxt">{{ index.cProduct }}</div>
+              </div>
+              <div nz-card-grid [ngStyle]="gridStyle"
+                ><div class="cardheader">装置</div>
+                <div class="cardheadertxt">{{ index.cAssetName }}</div>
+                <div class="cardheader">产量</div>
+                <div class="cardheadertxt">{{ index.iProd }} 吨</div></div
+              >
+              <div nz-card-grid [ngStyle]="gridStyle">
+                <div style="height: calc(25vh - 57px)" echarts [options]="eoptionLoad"></div>
+              </div>
+            </div>
+          </nz-card>
+        </div>
+      </nz-carousel>
+    </nz-card>
+    <nz-card [nzTitle]="titleLoad" [nzBordered]="false">
+      <ng-template #titleLoad
+        ><div class="block_header_slide flex-col"> <span>负荷趋势 </span> </div>
+      </ng-template>
+      <div style="height: calc(25vh - 57px)" echarts [options]="eoptionLoadTrend"></div>
+    </nz-card>
+    <nz-card [nzTitle]="titleLoadAnly" [nzBordered]="false">
+      <ng-template #titleLoadAnly>
+        <div class="block_header_slide flex-col"> <span>产品负荷分析 </span> </div>
+      </ng-template>
+      <div style="height: calc(25vh - 57px)" echarts [options]="eoptionLoadAnly"></div>
+    </nz-card>
+    <nz-card [nzTitle]="titleLoadTop5" [nzBordered]="false">
+      <ng-template #titleLoadTop5>
+        <div class="block_header_slide flex-col"> <span>公司负荷TOP5 </span> </div>
+      </ng-template>
+      <div style="height: calc(25vh - 57px)" echarts [options]="eoptionLoadTop5"></div>
+    </nz-card>
+  </div>
+  <div nz-col nzXs="24" nzSm="24" nzMd="12">
+    <nz-card [nzBordered]="false">
+      <!-- <ng-template #OverView
+        ><div class="box_37 flex-col"> <span>各分公司数据统计 </span></div></ng-template
+      > -->
+      <div style="height: calc(100vh - 115px)" echarts [options]="option3" (chartInit)="onChartInit($event)"></div>
+    </nz-card>
+  </div>
+  <div nz-col nzXs="24" nzSm="24" nzMd="6">
+    <nz-card [nzTitle]="titleProdTop5" [nzBordered]="false">
+      <ng-template #titleProdTop5>
+        <div class="block_header_slide flex-col"> <span>公司产量TOP5 </span></div></ng-template
+      >
+      <div style="height: calc(25vh - 57px)" echarts [options]="eoptionProdTop5"></div>
+    </nz-card>
+    <nz-card [nzTitle]="titleProdAnly" [nzBordered]="false">
+      <ng-template #titleProdAnly>
+        <div class="block_header_slide flex-col"> <span>产品产量分析 </span> </div>
+      </ng-template>
+      <div style="height: calc(25vh - 57px)" echarts [options]="eoptionProdAnly"></div>
+    </nz-card>
+    <nz-card [nzTitle]="titleProdLoadTrend" [nzBordered]="false">
+      <ng-template #titleProdLoadTrend>
+        <div class="block_header_slide flex-col"> <span>集团产量与负荷趋势 </span> </div>
+      </ng-template>
+      <div style="height: calc(25vh - 57px)" echarts [options]="eoptionProdLoadTrend"></div>
+    </nz-card>
+    <nz-card [nzTitle]="titleMemo" [nzBordered]="false">
+      <ng-template #titleMemo>
+        <div class="block_header_slide flex-col"> <span>当日情况说明 </span> </div>
+      </ng-template>
+      <nz-carousel nzAutoPlay>
+        <div style="height: calc(25vh - 57px)" nz-carousel-content *ngFor="let index of arrayMemo">
+          <h3>{{ index.cOrgName }} {{ index.cAssetName }}</h3>
+          <p class="text_tip">{{ index.cMemo }}</p>
+        </div>
+      </nz-carousel>
+    </nz-card>
+  </div>
+</div>
+<div class="block_footer flex-row"> </div>

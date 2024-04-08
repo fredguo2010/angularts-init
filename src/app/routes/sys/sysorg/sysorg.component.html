@@ -1,0 +1,43 @@
+<page-header [title]="'组织维护'" [action]="action"> </page-header>
+<ng-template #action>
+  <button (click)="add()" nz-button nzType="primary">新建</button>
+</ng-template>
+<nz-tabset>
+  <nz-tab nzTitle="架构图"> <app-sys-orgchart></app-sys-orgchart></nz-tab>
+  <nz-tab nzTitle="组织架构">
+    <div nz-row nzGutter="24">
+      <div nz-col nzMd="24" nzLg="4">
+        <nz-card nzBordered="false">
+          <nz-tree #nzTreeComponent [nzData]="orgnodes" [nzExpandAll]="'true'">
+            <!-- [nzCheckedKeys]="defaultCheckedKeys"
+      [nzExpandedKeys]="defaultExpandedKeys"
+      [nzSelectedKeys]="defaultSelectedKeys" -->
+          </nz-tree>
+        </nz-card>
+      </div>
+      <div nz-col nzMd="24" nzLg="20">
+        <nz-card nzBordered="false">
+          <sf mode="search" [schema]="searchSchema" (formSubmit)="conditionChange($event)" (formReset)="conditionChange($event)"></sf>
+          <st
+            #st
+            [widthMode]="{ type: 'strict' }"
+            [data]="data"
+            showSizeChanger
+            [total]="total"
+            [ps]="ps"
+            [noResult]="'no_data' | i18n"
+            [page]="pages"
+            [columns]="columns"
+            (change)="stChange($event)"
+          >
+            <ng-template st-row="status" let-i>
+              <nz-badge
+                [nzStatus]="i.status == 0 ? 'default' : 'processing'"
+                [nzText]="i.status == 0 ? '停用' : '启用'"
+              ></nz-badge> </ng-template
+          ></st>
+        </nz-card>
+      </div>
+    </div>
+  </nz-tab>
+</nz-tabset>

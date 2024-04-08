@@ -1,0 +1,19 @@
+<page-header [title]="'系统日志'" [action]="action"> </page-header>
+<ng-template #action>
+  <button (click)="download()" nz-button nzType="primary">导出</button>
+</ng-template>
+<nz-card nzBordered="false">
+  <sf mode="search" [schema]="searchSchema" (formSubmit)="conditionChange($event)" (formReset)="conditionChange($event)"></sf>
+  <st
+    #st
+    [widthMode]="{ type: 'strict' }"
+    [data]="data"
+    showSizeChanger
+    [total]="total"
+    [ps]="ps"
+    [noResult]="'no_data' | i18n"
+    [page]="pages"
+    [columns]="columns"
+    (change)="stChange($event)"
+  ></st>
+</nz-card>

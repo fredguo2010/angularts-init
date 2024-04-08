@@ -1,0 +1,23 @@
+<div class="modal-header">
+  <div class="modal-title">查看 {{ record.username }} 信息</div>
+</div>
+<nz-spin *ngIf="!record" class="modal-spin"></nz-spin>
+<div sv-container *ngIf="record">
+  <sv label="用户名">{{ record.username }}</sv>
+  <sv label="姓">{{ record.lastname }}</sv>
+  <sv label="名">{{ record.firstname }}</sv>
+  <sv label="头像">{{ record.avatar }}</sv>
+  <sv label="邮箱">{{ record.email }}</sv>
+  <sv label="签名">{{ record.signature }}</sv>
+  <sv label="职位">{{ record.title }}</sv>
+  <sv label="小组">{{ record.group }}</sv>
+  <sv label="通知次数">{{ record.notifyCount }}</sv>
+  <sv label="国家">{{ record.country }}</sv>
+  <sv label="地址">{{ record.address }}</sv>
+  <sv label="电话">{{ record.phone }}</sv>
+  <sv label="新建时间">{{ record.dAddTime }}</sv>
+  <sv label="角色">{{ record.role }}</sv>
+</div>
+<div class="modal-footer">
+  <button nz-button type="button" (click)="close()">关闭</button>
+</div>

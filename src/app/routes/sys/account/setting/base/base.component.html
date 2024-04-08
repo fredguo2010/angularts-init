@@ -1,0 +1,46 @@
+<nz-spin [nzSpinning]="userLoading">
+  <div class="main" *ngIf="user">
+    <div class="left">
+      <form nz-form nzLayout="vertical" #f="ngForm" (submit)="save()" se-container="1">
+        <se label="邮箱" error="请输入您的邮箱!">
+          <input nz-input type="email" [(ngModel)]="user.email" name="email" required />
+        </se>
+        <se label="姓" error="请输入您的姓!">
+          <input nz-input [(ngModel)]="user.lastname" name="lastname" required />
+        </se>
+        <se label="名" error="请输入您的名!">
+          <input nz-input [(ngModel)]="user.firstname" name="firstname" required />
+        </se>
+        <se label="国家/地区">
+          <input nz-input [(ngModel)]="user.country" name="country" />
+        </se>
+        <se label="地址" error="请输入您的地址!">
+          <input nz-input [(ngModel)]="user.address" name="address" />
+        </se>
+        <se label="联系电话" error="请输入您的联系电话!">
+          <input nz-input [(ngModel)]="user.phone" name="phone" />
+        </se>
+        <se>
+          <button nz-button nzType="primary" [disabled]="f.invalid">更新基本信息</button>
+        </se>
+      </form>
+    </div>
+    <div class="right">
+      <div class="avatar__title">Avatar</div>
+      <div class="avatar"><img src="{{ user.avatar }}" alt="Avatar" /></div>
+      <nz-upload
+        nzAction="/Users/avator/upload"
+        [nzData]="cHeaders"
+        nzName="avatar"
+        [nzShowUploadList]="false"
+        [nzBeforeUpload]="beforeUpload"
+        (nzChange)="handleChange($event)"
+      >
+        <button nz-button class="avatar__btn">
+          <i nz-icon nzType="upload"></i>
+          <span>更换头像</span>
+        </button>
+      </nz-upload>
+    </div>
+  </div>
+</nz-spin>

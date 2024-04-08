@@ -1,0 +1,27 @@
+<page-header [title]="'用户管理'" [action]="action"> </page-header>
+<ng-template #action>
+  <button nz-button nzType="primary" (click)="printSection('printable')">打印</button>
+
+  <!-- <nz-radio-group [(ngModel)]="cardorlist" [nzButtonStyle]="'solid'">
+    <label nz-radio-button nzValue="list">VIDEO</label>
+    <label nz-radio-button nzValue="card">LOG</label>
+  </nz-radio-group> -->
+  <!-- <button (click)="add()" nz-button nzType="primary">新建</button> -->
+</ng-template>
+<nz-card nzBordered="false">
+  <sf mode="search" [schema]="searchSchema" (formSubmit)="conditionChange($event)" (formReset)="conditionChange($event)"></sf>
+  <div id="printable">
+    <st
+      #st
+      [widthMode]="{ type: 'strict', strictBehavior: 'truncate' }"
+      [data]="data"
+      showSizeChanger
+      [total]="total"
+      [ps]="ps"
+      [noResult]="'no_data' | i18n"
+      [page]="pages"
+      [columns]="columns"
+      (change)="stChange($event)"
+    ></st>
+  </div>
+</nz-card>

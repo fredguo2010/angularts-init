@@ -1,0 +1,127 @@
+:host ::ng-deep {
+    #chart-container {
+        font-family: Arial;
+        overflow: auto;
+        text-align: center;
+    }
+
+    .myChart {
+        box-sizing: border-box;
+        display: inline-block;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        background-image: linear-gradient(90deg, rgba(33, 90, 136, 0.15) 10%, rgba(0, 0, 0, 0) 10%), linear-gradient(rgba(33, 90, 136, 0.15) 10%, rgba(0, 0, 0, 0) 10%);
+        background-size: 10px 10px;
+        border: 1px dashed transparent;
+        padding: 20px 20px 0 20px
+    }
+
+    .orgchart .hierarchy {
+        position: relative
+    }
+
+    .orgchart .hierarchy::before {
+        content: "";
+        position: absolute;
+        top: -11px;
+        left: 0;
+        width: 100%;
+        border-top: 2px solid rgba(33, 90, 136, 0.8);
+        box-sizing: border-box
+    }
+
+    .orgchart .hierarchy.isSiblingsCollapsed.left-sibs::before,
+    .orgchart .hierarchy:first-child::before {
+        left: calc(50% - 1px);
+        width: calc(50% + 1px)
+    }
+
+    .orgchart .hierarchy.isSiblingsCollapsed.right-sibs::before,
+    .orgchart .hierarchy:last-child::before {
+        width: calc(50% + 1px)
+    }
+
+    .orgchart .hierarchy:not(.hidden):only-child::before {
+        width: 2px
+    }
+
+    .myChart .node:not(:only-child)::after {
+        content: "";
+        position: absolute;
+        bottom: -11px;
+        left: calc(50% - 1px);
+        width: 2px;
+        height: 9px;
+        background-color: rgba(33, 90, 136, 0.8)
+    }
+
+    .myChart>ul>li>ul li>.node::before {
+        content: "";
+        position: absolute;
+        top: -11px;
+        left: calc(50% - 1px);
+        width: 2px;
+        height: 9px;
+        background-color: rgba(33, 90, 136, 0.8)
+    }
+
+    .myChart .node .title {
+        box-sizing: border-box;
+        padding: 2px;
+        width: 130px;
+        text-align: center;
+        font-size: .75rem;
+        font-weight: 700;
+        height: 20px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        background-color: rgba(33, 90, 136, 0.8);
+        color: #fff;
+        border-radius: 4px 4px 0 0
+    }
+
+    .myChart .node .title .symbol::before {
+        background-color: #fff;
+        border-color: rgba(33, 90, 136, 0.8)
+    }
+
+    .myChart .node .content {
+        box-sizing: border-box;
+        padding: 2px;
+        height: 20px;
+        font-size: .625rem;
+        border: 1px solid rgba(33, 90, 136, 0.8);
+        border-radius: 0 0 4px 4px;
+        text-align: center;
+        background-color: #fff;
+        color: #333;
+        text-overflow: ellipsis;
+        white-space: nowrap
+    }
+
+    .myChart .nodes.vertical::before {
+        content: '';
+        display: inline-block;
+        position: relative;
+        height: 14px;
+        width: 2px;
+        left: -9px;
+        background-color: rgba(33, 90, 136, 0.8)
+    }
+
+    .myChart .nodes.vertical .hierarchy::before {
+        box-sizing: border-box;
+        content: '';
+        position: absolute;
+        left: -6px;
+        border-color: rgba(33, 90, 136, 0.8);
+        border-style: solid;
+        border-width: 0 0 2px 2px
+    }
+
+}

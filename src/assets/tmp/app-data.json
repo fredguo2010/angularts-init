@@ -1,0 +1,38 @@
+{
+  "app": {
+    "name": "Rockii Software",
+    "description": "Ng-zorro admin panel front-end framework"
+  },
+  "user": {
+    "name": "Admin",
+    "avatar": "./assets/tmp/img/avatar.jpg",
+    "email": "cipchk@qq.com"
+  },
+  "menu": [
+    {
+      "text": "Historian",
+      "i18n": "menu.main",
+      "group": true,
+      "hideInBreadcrumb": true,
+      "children": [
+        {
+          "text": "FTHIST",
+          "i18n": "menu.piweb",
+          "icon": "anticon-dashboard",
+          "children": [
+            {
+              "text": "工艺数据取存",
+              "link": "/piweb/streamset",
+              "i18n": "menu.piweb.hist1"
+            },
+            {
+              "text": "Tag点信息",
+              "link": "/piweb/histpoint",
+              "i18n": "menu.piweb.histpoint"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

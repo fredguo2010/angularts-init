@@ -1,0 +1,43 @@
+<div nz-row style="padding: 20px 20px 0 20px">
+  <div nz-row class="htitle"> BIG DATA TOOL </div>
+  <nz-divider></nz-divider>
+</div>
+<div nz-row class="subtitle"> 结果变量输入 </div>
+<div nz-row style="padding: 20px 20px 0 20px; display: block; text-align: center; margin: auto">
+  <div class="sectiontxt">原始数据集</div>
+  <nz-divider></nz-divider>
+  <img nz-image [src]="inputbase64img" />
+</div>
+<div nz-row style="padding: 20px 20px 0 20px; display: block; text-align: center; margin: auto">
+  <div class="sectiontxt">请手动输入结果变量</div>
+  <nz-divider></nz-divider>
+  <div nz-col nzSpan="8" style="display: block; text-align: center; margin: auto">
+    <input nz-input />
+  </div>
+  <div nz-col nzSpan="8" style="padding: 20px; display: block; text-align: center; margin: auto">
+    <button nz-button nzType="primary" routerLink="/bigdata/categorybuilder">下一步</button>
+  </div>
+</div>
+<div nz-row style="padding: 20px 20px 0 20px">
+  <div style="display: block; margin: auto">
+    <H3>数据清洗逻辑</H3>
+    <ol>
+      <li>删除响应值为空的数据点 </li>
+      <li>如果某一变量缺失值超过50%则删除此变量</li>
+      <li>如果是分类型数据则用众数补充空值；非分类型用中位数补充</li>
+      <li
+        >删除分类型数据如果他的独立值>10
+        （如：名字为分类型，但名字的具体独立值非常基本都不相同，工具会认为他没有意义；颜色也为分类型，且它的独立值一般不会过多）
+      </li>
+    </ol>
+
+    <H3>数据预处理逻辑</H3>
+    <ol>
+      <li> 将清洗后的分类型变量根据可视化&建模需求使用Label Encoder & One-Hot Encoder进行变换</li>
+      <li>将数据集以8:2的比例分为训练集和测试集 </li>
+      <li> 由于需要保持一定的运算速度，当数据点>5000时会随机删除数据点（下采样）使数据量保持在5000</li>
+      <li> 当数据为分类型时，对独立值数量过少的值进行上采样，使其达到独立数量最多的值的20%</li>
+      <li>对数据进行归一化处理避免使某些值过大的数占据模型过大比重 </li>
+    </ol>
+  </div>
+</div>

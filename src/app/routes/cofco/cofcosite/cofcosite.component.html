@@ -1,0 +1,132 @@
+<page-header title="{{ cname }}" [action]="phActionTpl">
+  <ng-template #phActionTpl>
+    <!-- <button (click)="add()" nz-button nzType="primary">新建</button> -->
+    {{ cname }}
+  </ng-template>
+</page-header>
+<quick-menu>
+  <nz-list [nzBordered]="false" [nzSplit]="false">
+    <nz-list-item>
+      <a routerLink="/">Home</a>
+    </nz-list-item>
+    <nz-list-item>
+      <a routerLink="/widgets">Widgets</a>
+    </nz-list-item>
+    <nz-list-item>
+      <a routerLink="/style/typography">typography</a>
+    </nz-list-item>
+    <nz-list-item>
+      <a routerLink="/style/gridmasonry">gridmasonry</a>
+    </nz-list-item>
+    <nz-list-item>
+      <a routerLink="/pro/result/success">success result</a>
+    </nz-list-item>
+  </nz-list>
+</quick-menu>
+<div nz-row>
+  <div nz-col nzMd="24" nzLg="16">
+    <div class="ant-card-head-title">当前产量指标（单位：t）</div>
+    <div nz-row nzGutter="24" nzJustify="space-between">
+      <div nz-col nzXs="24" nzSm="12" nzMd="4" class="mb-md">
+        <div nz-row nzType="flex" nzAlign="middle" class="bg-orange rounded-lg">
+          <div nz-col nzSpan="12" class="p-md text-white">
+            <div class="h6 text-nowrap mt0">今日：0</div>
+            <!-- <div class="h6 text-nowrap mt0">本月：-</div> -->
+            <p class="text-nowrap mb0">燃料乙醇(99.5%)</p>
+          </div>
+        </div>
+      </div>
+      <div nz-col nzXs="24" nzSm="12" nzMd="4" class="mb-md">
+        <div nz-row nzType="flex" nzAlign="middle" class="bg-blue rounded-lg">
+          <div nz-col nzSpan="12" class="p-md text-white">
+            <div class="h6 text-nowrap mt0">今日：0</div>
+            <!-- <div class="h6 text-nowrap mt0">本月：-</div> -->
+            <p class="text-nowrap mb0">燃料乙醇（加工粗酒）</p>
+          </div>
+        </div>
+      </div>
+      <div nz-col nzXs="24" nzSm="12" nzMd="4" class="mb-md">
+        <div nz-row nzType="flex" nzAlign="middle" class="bg-purple-light rounded-lg">
+          <div nz-col nzSpan="12" class="p-md text-white">
+            <div class="h6 text-nowrap mt0">今日：0</div>
+            <!-- <div class="h6 text-nowrap mt0">本月：-</div> -->
+            <p class="text-nowrap mb0">食用酒精</p>
+          </div>
+        </div>
+      </div>
+      <div nz-col nzXs="24" nzSm="12" nzMd="4" class="mb-md">
+        <div nz-row nzType="flex" nzAlign="middle" class="bg-green rounded-lg">
+          <div nz-col nzSpan="12" class="p-md text-white">
+            <div class="h6 text-nowrap mt0">今日：0</div>
+            <!-- <div class="h6 text-nowrap mt0">本月：-</div> -->
+            <p class="text-nowrap mb0">DDGS</p>
+          </div>
+        </div>
+      </div>
+      <div nz-col nzXs="24" nzSm="12" nzMd="4" class="mb-md">
+        <div nz-row nzType="flex" nzAlign="middle" class="bg-blue rounded-lg">
+          <div nz-col nzSpan="12" class="p-md text-white">
+            <div class="h6 text-nowrap mt0">今日：0</div>
+            <!-- <div class="h6 text-nowrap mt0">本月：-</div> -->
+            <p class="text-nowrap mb0">玉米原油</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div nz-row nzGutter="24" nzJustify="center">
+      <div nz-col nzXs="24" nzSm="12" nzMd="12" class="mb-md">
+        <nz-card nzTitle="原料加工量（单位：t）">
+          <div style="height: calc(50vh - 200px)" echarts [options]="eoptionProdProcess"></div>
+        </nz-card>
+      </div>
+      <div nz-col nzXs="24" nzSm="12" nzMd="12" class="mb-md">
+        <nz-card nzTitle="辅料消耗（单位：t）">
+          <div style="height: calc(50vh - 200px)" echarts [options]="eoptionProdProcess"></div>
+        </nz-card>
+      </div>
+    </div>
+    <div nz-row nzGutter="24" nzJustify="center">
+      <div nz-col nzXs="24" nzSm="12" nzMd="12" class="mb-md">
+        <nz-card nzTitle="技术指标">
+          <div style="height: calc(50vh - 200px)" echarts [options]="eoptionProdProcess"></div>
+        </nz-card>
+      </div>
+      <div nz-col nzXs="24" nzSm="12" nzMd="12" class="mb-md">
+        <nz-card nzTitle="动力能源">
+          <st
+            #st
+            [widthMode]="{ type: 'strict' }"
+            [data]="dataEnergy"
+            showSizeChanger
+            [total]="total"
+            [ps]="ps"
+            [noResult]="'no_data' | i18n"
+            [columns]="columns"
+            [loading]="loading"
+          >
+            <ng-template st-row="status" let-i>
+              <nz-badge
+                [nzStatus]="i.status == 0 ? 'default' : 'processing'"
+                [nzText]="i.status == 0 ? '停用' : '启用'"
+              ></nz-badge> </ng-template
+          ></st>
+        </nz-card>
+      </div>
+    </div>
+  </div>
+  <div nz-col nzMd="24" nzLg="8" style="padding: 12px">
+    <nz-card nzTitle="装置运行情况">
+      <div style="height: calc(50vh - 67px)" echarts [options]="eoptionAssetRuntime"></div>
+    </nz-card>
+    <div class="ant-card-head-title">COD产生量</div>
+    <nz-card nzTitle="动力能源">
+      <g2-mini-progress height="46" percent="78" strokeWidth="8" target="80" color="#13C2C2"></g2-mini-progress>
+    </nz-card>
+    <nz-card nzTitle="动力能源">
+      <g2-mini-progress height="46" percent="78" strokeWidth="8" target="80" color="#13C2C2"></g2-mini-progress>
+    </nz-card>
+    <nz-card nzTitle="动力能源">
+      <g2-mini-progress height="46" percent="78" strokeWidth="8" target="80" color="#13C2C2"></g2-mini-progress>
+    </nz-card>
+  </div>
+</div>

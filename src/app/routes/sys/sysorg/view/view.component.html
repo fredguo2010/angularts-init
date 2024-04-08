@@ -1,0 +1,19 @@
+<div class="modal-header">
+  <div class="modal-title">查看 {{ record.text }} 信息</div>
+</div>
+<nz-spin *ngIf="!record" class="modal-spin"></nz-spin>
+<div sv-container *ngIf="record">
+  <sv label="编码">{{ record.cOrgCode }}</sv>
+  <sv label="名称">{{ record.cOrgName }}</sv>
+  <sv label="类型">{{ record.cOrgType }}</sv>
+  <sv label="父项">{{ record.cParentOrgName }}</sv>
+  <sv label="负责人">{{ record.cHead }}</sv>
+  <sv label="状态" [type]="record.iStatus == 1 ? 'success' : 'warning'">{{ record.iStatus == 1 ? '启用' : '禁用' }}</sv>
+  <sv label="创建人">{{ record.cCreateUserName }}</sv>
+  <sv label="创建时间">{{ record.dCreateTime }}</sv>
+  <sv label="修改人">{{ record.cModifyUserName }}</sv>
+  <sv label="修改时间">{{ record.dModifyTime }}</sv>
+</div>
+<div class="modal-footer">
+  <button nz-button type="button" (click)="close()">关闭</button>
+</div>

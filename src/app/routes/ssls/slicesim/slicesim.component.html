@@ -1,0 +1,54 @@
+<page-header title="模拟铜牌下线" [action]="phActionTpl" [content]="contentTpl">
+  <ng-template #phActionTpl>
+    <button (click)="simOffline()" nz-button nzType="primary" [disabled]="simloading"> 模拟铜牌下线</button>
+  </ng-template>
+  <ng-template #contentTpl>
+    <div nz-row style="padding: 20px 20px 0 20px" nzGutter="8">
+      <div nz-col nzXs="24" nzSm="24" nzMd="3"> 工作批次<input width="100" nz-input [(ngModel)]="cBatchNo" /> </div>
+      <div nz-col nzXs="24" nzSm="24" nzMd="3">PO号 <input width="100" nz-input [(ngModel)]="cBatchNo" /></div>
+    </div>
+  </ng-template>
+</page-header>
+<div nz-row style="padding: 20px 20px 0 20px" nzGutter="8">
+  <div nz-col nzXs="24" nzSm="24" nzMd="6">
+    <nz-card nzBordered="false">
+      <div sv-container *ngIf="simulatordata">
+        <sv label="长">{{ simulatordata.iLength }}</sv>
+        <sv label="宽">{{ simulatordata.iWidth }}</sv>
+        <sv label="高">{{ simulatordata.iHeight }}</sv>
+        <sv label="框">{{ simulatordata.cFrameCode }}</sv>
+        <sv label="槽">{{ simulatordata.cSlotCode }}</sv>
+        <sv label="槽">{{ simulatordata.cSlotName }}</sv>
+        <sv label="优先级">{{ simulatordata.iSlotOrder }}</sv>
+        <sv label="层">{{ simulatordata.iLevel }}</sv>
+        <sv label="栏">{{ simulatordata.iColumn }}</sv>
+        <sv label="块">{{ simulatordata.iBlock }}</sv>
+      </div>
+    </nz-card>
+    <nz-card nzBordered="false">
+      <st #st [data]="testdata" [columns]="testdatacolumns" [page]="page"></st>
+    </nz-card>
+  </div>
+
+  <div nz-col nzXs="24" nzSm="24" nzMd="6">
+    <nz-card nzTitle="块数据">
+      <st #stLevel [data]="blocklevelsdata" [columns]="columnsLevel" [page]="page"></st>
+    </nz-card>
+    <nz-card nzTitle="第一层数据">
+      <st #stLevel [data]="level1data" [columns]="columnsLevel" [page]="page"></st>
+    </nz-card>
+    <nz-card nzTitle="所有层数据">
+      <st #stLevel [data]="levelsdata" [columns]="columnsLevel" [page]="page"></st>
+    </nz-card>
+    <nz-card nzBordered="false">
+      <st #st [data]="data" [columns]="columns" [page]="page"></st>
+    </nz-card>
+  </div>
+  <div nz-col nzXs="24" nzSm="24" nzMd="12">
+    <nz-card nzBordered="false">
+      <div nz-row nzGutter="8">
+        <div nz-col *ngFor="let lsvgItem of level1Svgs" [innerHTML]="lsvgItem"> </div>
+      </div>
+    </nz-card>
+  </div>
+</div>

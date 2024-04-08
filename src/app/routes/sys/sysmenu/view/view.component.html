@@ -1,0 +1,17 @@
+<div class="modal-header">
+  <div class="modal-title">查看 {{ record.text }} 信息</div>
+</div>
+<nz-spin *ngIf="!record" class="modal-spin"></nz-spin>
+<div sv-container *ngIf="record">
+  <sv label="菜单名">{{ record.text }}</sv>
+  <sv label="路由">{{ record.link }}</sv>
+  <sv label="翻译">{{ record.i18n }}</sv>
+  <sv label="图标">{{ record.icon }}</sv>
+  <sv label="备注">{{ record.memo }}</sv>
+  <sv label="状态">{{ record.status }}</sv>
+  <sv label="排序">{{ record.sort }}</sv>
+  <sv label="新建时间">{{ record.dAddTime }}</sv>
+</div>
+<div class="modal-footer">
+  <button nz-button type="button" (click)="close()">关闭</button>
+</div>

@@ -1,0 +1,134 @@
+<head>
+  <title>DashboardA</title>
+</head>
+
+<div nz-row nzGutter="24" style="padding: 20px 20px 0 20px">
+  <div nz-col nzXs="24" nzSm="24" nzMd="4" style="text-align: left" class="headertxt">{{ cdate }}</div>
+  <div nz-col nzXs="24" nzSm="24" nzMd="16" style="text-align: center" class="headertxt">罗克韦尔工厂管理驾驶舱</div>
+  <div nz-col nzXs="24" nzSm="24" nzMd="4" style="text-align: right" class="headertxt">温度:25/14℃ 湿度：16%</div>
+</div>
+<div nz-row nzGutter="24" style="padding: 20px">
+  <div nz-col nzXs="24" nzMd="12" nzLg="12" nzXl="12" nzXXl="6">
+    <nz-card [nzTitle]="titleEsum" [nzBordered]="false">
+      <ng-template #titleEsum> 设备统计 </ng-template>
+      <div style="height: 408px" echarts [options]="option1"></div>
+    </nz-card>
+  </div>
+  <div nz-col nzXs="24" nzMd="12" nzLg="12" nzXl="12" nzXXl="12">
+    <nz-card [nzTitle]="titleItotal" [nzBordered]="false">
+      <ng-template #titleItotal> 故障统计 </ng-template>
+      <div style="height: 408px" echarts [options]="option2"></div>
+    </nz-card>
+  </div>
+  <div nz-col nzXs="24" nzMd="12" nzLg="12" nzXl="12" nzXXl="3">
+    <nz-card [nzTitle]="titleOEE" [nzBordered]="false" [nzExtra]="extOEE">
+      <ng-template #titleOEE>Overall OEE</ng-template>
+      <ng-template #extOEE> 82.4% </ng-template>
+      <div style="height: 148px" nz-row nzType="flex" nzAlign="middle">
+        <div nz-col nzSpan="12">
+          <div class="factorname">可用性：</div>
+          <div class="factorname">性能：</div>
+          <div class="factorname">质量：</div>
+        </div>
+        <div nz-col nzSpan="12">
+          <div class="factorvalue">91.93%</div>
+          <div class="factorvalue">96.36%</div>
+          <div class="factorvalue">95%</div>
+        </div>
+      </div>
+    </nz-card>
+    <nz-card [nzTitle]="titleCap" [nzBordered]="false" [nzExtra]="extCap">
+      <ng-template #titleCap>性能</ng-template>
+      <ng-template #extCap> 96.36%</ng-template>
+      <div style="height: 148px" nz-row nzType="flex" nzAlign="middle">
+        <div nz-col nzSpan="12">
+          <div class="factorname">计划产量</div>
+          <div class="factorname">实时产量</div>
+        </div>
+        <div nz-col nzSpan="12">
+          <div class="factorvalue">81,000</div>
+          <div class="factorvalue">78,050</div>
+        </div>
+      </div>
+    </nz-card>
+  </div>
+  <div nz-col nzXs="24" nzMd="12" nzLg="12" nzXl="12" nzXXl="3">
+    <nz-card [nzTitle]="totleAvi" [nzBordered]="false" [nzExtra]="extAvi">
+      <ng-template #totleAvi> 可用性</ng-template>
+      <ng-template #extAvi> 91.93%</ng-template>
+      <div style="height: 148px" nz-row nzType="flex" nzAlign="middle">
+        <div nz-col nzSpan="12">
+          <div class="factorname">计划：</div>
+          <div class="factorname">实际：</div>
+          <div class="factorname">非计划：</div>
+        </div>
+        <div nz-col nzSpan="12">
+          <div class="factorvalue">3840</div>
+          <div class="factorvalue">3530</div>
+          <div class="factorvalue">310</div>
+        </div>
+      </div>
+    </nz-card>
+    <nz-card [nzTitle]="titleQty" [nzBordered]="false" [nzExtra]="extQyt">
+      <ng-template #titleQty>质量</ng-template>
+      <ng-template #extQyt> 95%</ng-template>
+      <div style="height: 148px" nz-row nzType="flex" nzAlign="middle">
+        <div nz-col nzSpan="12">
+          <div class="factorname">实时产量：</div>
+          <div class="factorname">缺陷产量：</div>
+        </div>
+        <div nz-col nzSpan="12">
+          <div class="factorvalue">78,050</div>
+          <div class="factorvalue">3,900</div>
+        </div>
+      </div>
+    </nz-card>
+  </div>
+</div>
+<div nz-row nzGutter="24" style="padding: 0 20px 0 20px">
+  <div nz-col nzXs="24" nzMd="12" nzLg="12" nzXl="12" nzXXl="6">
+    <nz-card [nzTitle]="titleOrder" [nzBordered]="false">
+      <ng-template #titleOrder> 工单 </ng-template>
+      <nz-table #basicTable [nzData]="listOfData" style="height: 350px">
+        <thead>
+          <tr>
+            <th>工单号</th>
+            <th>工单状态</th>
+            <th>工单名称</th>
+            <th>负责人</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of basicTable.data">
+            <td>{{ data.ordernumber }}</td>
+            <td>{{ data.orderstatus }}</td>
+            <td>{{ data.ordername }}</td>
+            <td>{{ data.orderhead }}</td>
+          </tr>
+        </tbody>
+      </nz-table>
+    </nz-card>
+  </div>
+  <div nz-col nzXs="24" nzMd="12" nzLg="12" nzXl="12" nzXXl="6">
+    <nz-card [nzTitle]="titleOrderDis" [nzBordered]="false">
+      <ng-template #titleOrderDis>工单状态分布 </ng-template>
+      <div style="height: 100px" echarts [options]="option3"></div>
+    </nz-card>
+    <nz-card [nzTitle]="titleMTTR" [nzBordered]="false">
+      <ng-template #titleMTTR> MTTR </ng-template>
+      <div style="height: 160px" echarts [options]="option4"></div>
+    </nz-card>
+  </div>
+  <div nz-col nzXs="24" nzMd="12" nzLg="12" nzXl="12" nzXXl="6">
+    <nz-card [nzTitle]="titleLineOEE" [nzBordered]="false">
+      <ng-template #titleLineOEE> 产线OEE</ng-template>
+      <div style="height: 350px" echarts [options]="option5"></div>
+    </nz-card>
+  </div>
+  <div nz-col nzXs="24" nzMd="12" nzLg="12" nzXl="12" nzXXl="6">
+    <nz-card [nzTitle]="titleWorkshopOEE" [nzBordered]="false">
+      <ng-template #titleWorkshopOEE> 车间OEE</ng-template>
+      <div style="height: 350px" echarts [options]="option6"></div>
+    </nz-card>
+  </div>
+</div>

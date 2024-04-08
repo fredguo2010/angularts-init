@@ -1,0 +1,32 @@
+<page-header [breadcrumb]="breadcrumb" title="Tags">
+  <ng-template #breadcrumb>
+    <nz-breadcrumb>
+      <nz-breadcrumb-item>
+        <a [routerLink]="['/']">首页</a>
+      </nz-breadcrumb-item>
+      <nz-breadcrumb-item>
+        <a [routerLink]="['/device/devicelist']">Device</a>
+      </nz-breadcrumb-item>
+      <nz-breadcrumb-item>Tags</nz-breadcrumb-item>
+    </nz-breadcrumb>
+  </ng-template></page-header
+>
+<nz-card [nzLoading]="loading" nzTitle="Influxdata Trend Client" [nzExtra]="extraTemplate">
+  <ng-template #extraTemplate>
+    <nz-select style="width: 200px" [(ngModel)]="selectedTagId" (ngModelChange)="selectedTagIdChange($event)">
+      <nz-option *ngFor="let p of data" [nzValue]="p.id" [nzLabel]="p.name"></nz-option>
+    </nz-select>
+    <nz-range-picker
+      [nzShowTime]="{ nzFormat: 'HH:mm' }"
+      nzFormat="yyyy-MM-dd HH:mm"
+      [(ngModel)]="dDate"
+      (ngModelChange)="onChange($event)"
+      (nzOnOk)="onOk($event)"
+    ></nz-range-picker>
+    <button (click)="getData()" nz-button nzType="primary" [disabled]="selectedTagId == '' || dDate.length < 2">
+      <span nz-icon nzType="search"></span>
+      查询
+    </button>
+  </ng-template>
+  <div style="height: calc(100vh - 315px)" echarts [options]="optionTrend" (chartInit)="onChartInit($event)"></div>
+</nz-card>

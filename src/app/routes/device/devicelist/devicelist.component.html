@@ -1,0 +1,13 @@
+<page-header title="Device List"> </page-header>
+<div nz-row nzGutter="24">
+  <div nz-col nzSpan="6" class="item" *ngFor="let iDevice of data">
+    <nz-card nzTitle="{{ iDevice.name }}" [nzExtra]="extraTemplate">
+      <p>Name:{{ iDevice.name }}</p>
+      <p>Type:{{ iDevice.type }}</p>
+      <p>Polling:{{ iDevice.polling }}</p>
+    </nz-card>
+    <ng-template #extraTemplate>
+      <a (click)="naviTags(iDevice.tags)">More</a>
+    </ng-template>
+  </div>
+</div>

@@ -1,0 +1,97 @@
+<div nz-row nzGutter="24" style="padding: 20px 20px 0 20px">
+  <div nz-col nzXs="24" nzSm="24" nzMd="4" style="text-align: left" class="headertxt">{{ cdate }}</div>
+  <div nz-col nzXs="24" nzSm="24" nzMd="16" style="text-align: center" class="headertxt">罗克韦尔工厂管理驾驶舱</div>
+  <div nz-col nzXs="24" nzSm="24" nzMd="4" style="text-align: right" class="headertxt">温度:25/14℃ 湿度：16% </div>
+</div>
+<div nz-row nzGutter="24" style="padding: 20px">
+  <div nz-col nzXs="24" nzMd="12" nzLg="12" nzXl="12" nzXXl="12">
+    <nz-card [nzTitle]="titleWorkLoad" [nzBordered]="false">
+      <ng-template #titleWorkLoad> 实时工作情况 </ng-template>
+      <div nz-card-grid [ngStyle]="gridStyle" class="factordiv">
+        <div class="factorname">运行（台）</div>
+        <div class="factorvalue">50</div>
+      </div>
+      <div nz-card-grid [ngStyle]="gridStyle" class="factordiv">
+        <div class="factorname">空闲（台）</div>
+        <div class="factorvalue">50</div>
+      </div>
+      <div nz-card-grid [ngStyle]="gridStyle" class="factordiv">
+        <div class="factorname">报警（台）</div>
+        <div class="factorvalue">50</div>
+      </div>
+      <div nz-card-grid [ngStyle]="gridStyle" class="factordiv">
+        <div class="factorname">报警（台）</div>
+        <div class="factorvalue">50</div>
+      </div>
+      <div nz-card-grid []="gridStyle33">
+        <div style="height: 370px" echarts [options]="option11"></div>
+      </div>
+      <div nz-card-grid [ngStyle]="gridStyle33">
+        <div style="height: 370px" echarts [options]="option12"></div>
+      </div>
+      <div nz-card-grid [ngStyle]="gridStyle33">
+        <div style="height: 370px" echarts [options]="option13"></div>
+      </div>
+    </nz-card>
+  </div>
+
+  <div nz-col nzXs="24" nzMd="12" nzLg="12" nzXl="12" nzXXl="6">
+    <nz-card [nzTitle]="titleEsum" [nzBordered]="false">
+      <ng-template #titleEsum> 设备统计 </ng-template>
+      <div style="height: 424px" echarts [options]="option1"></div>
+    </nz-card>
+  </div>
+  <div nz-col nzXs="24" nzMd="12" nzLg="12" nzXl="12" nzXXl="6">
+    <nz-card [nzTitle]="titleItotal" [nzBordered]="false">
+      <ng-template #titleItotal> 故障统计 </ng-template>
+      <div style="height: 424px" echarts [options]="option2"></div>
+    </nz-card>
+  </div>
+</div>
+<div nz-row nzGutter="24" style="padding: 0 20px 0 20px">
+  <div nz-col nzXs="24" nzMd="12" nzLg="12" nzXl="12" nzXXl="6">
+    <nz-card [nzTitle]="titleOrder" [nzBordered]="false">
+      <ng-template #titleOrder> 工单 </ng-template>
+      <nz-table #basicTable [nzData]="listOfData" style="height: 350px">
+        <thead>
+          <tr>
+            <th>工单号</th>
+            <th>工单状态</th>
+            <th>工单名称</th>
+            <th>负责人</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of basicTable.data">
+            <td>{{ data.ordernumber }}</td>
+            <td>{{ data.orderstatus }}</td>
+            <td>{{ data.ordername }}</td>
+            <td>{{ data.orderhead }}</td>
+          </tr>
+        </tbody>
+      </nz-table>
+    </nz-card>
+  </div>
+  <div nz-col nzXs="24" nzMd="12" nzLg="12" nzXl="12" nzXXl="6">
+    <nz-card [nzTitle]="titleOrderDis" [nzBordered]="false">
+      <ng-template #titleOrderDis>工单状态分布</ng-template>
+      <div style="height: 100px" echarts [options]="option3"></div>
+    </nz-card>
+    <nz-card [nzTitle]="titleMTTR" [nzBordered]="false">
+      <ng-template #titleMTTR> MTTR </ng-template>
+      <div style="height: 155px" echarts [options]="option4"></div>
+    </nz-card>
+  </div>
+  <div nz-col nzXs="24" nzMd="12" nzLg="12" nzXl="12" nzXXl="6">
+    <nz-card [nzTitle]="titleMan" [nzBordered]="false">
+      <ng-template #titleMan> 维修状态统计</ng-template>
+      <div style="height: 350px" echarts [options]="option66"></div>
+    </nz-card>
+  </div>
+  <div nz-col nzXs="24" nzMd="12" nzLg="12" nzXl="12" nzXXl="6">
+    <nz-card [nzTitle]="titleWorkshopOEE" [nzBordered]="false">
+      <ng-template #titleWorkshopOEE>保养和点巡检完成率</ng-template>
+      <div style="height: 350px" echarts [options]="option6" (chartInit)="onChartInit($event)"></div>
+    </nz-card>
+  </div>
+</div>

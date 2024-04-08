@@ -1,0 +1,3 @@
+<nz-tabset [(nzSelectedIndex)]="selectedIndex" nzType="editable-card" nzHideAdd (nzClose)="closeTab($event)" >
+  <nz-tab *ngFor="let tab of tabs" nzClosable [nzTitle]="tab?.title" (nzClick)="jumpPage(tab?.url)"> </nz-tab>
+</nz-tabset>

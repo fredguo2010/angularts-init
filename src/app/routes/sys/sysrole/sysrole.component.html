@@ -1,0 +1,32 @@
+<page-header [title]="'角色维护'" [action]="action"> </page-header>
+<ng-template #action>
+  <button (click)="add()" nz-button nzType="primary">新建</button>
+</ng-template>
+<div nz-row nzGutter="24">
+  <div nz-col nzMd="24" nzLg="12">
+    <nz-card nzTitle="角色" [nzExtra]="actionTpl" class="ant-card__body-nopadding">
+      <nz-card [nzBordered]="false" class="mb-lg" [nzLoading]="">
+        <st #st [data]="roledata" [columns]="rolecolumns" (change)="rstChange($event)" [noResult]="'no_data' | i18n"></st>
+      </nz-card>
+    </nz-card>
+    <ng-template #actionTpl>
+      <a (click)="add()">新建</a>
+    </ng-template>
+  </div>
+
+  <div nz-col nzMd="24" nzLg="12">
+    <nz-card nzTitle="菜单权限" [nzExtra]="actionMenuTpl">
+      <nz-tree
+        #nzTreeComponent
+        [nzData]="menunodes"
+        [nzExpandAll]="'true'"
+        nzCheckable
+        nzMultiple
+        (nzCheckBoxChange)="nzMenuCheck($event)"
+      ></nz-tree>
+    </nz-card>
+    <ng-template #actionMenuTpl>
+      <a (click)="syncRoleMenu()">同步</a>
+    </ng-template>
+  </div>
+</div>

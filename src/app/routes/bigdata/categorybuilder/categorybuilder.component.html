@@ -1,0 +1,77 @@
+<div nz-row style="padding: 20px 20px 0 20px">
+  <div nz-row class="htitle"> BIG DATA TOOL </div>
+  <nz-divider></nz-divider>
+</div>
+<div nz-row class="subtitle"> 数据清洗预处理&可视化 </div>
+<div nz-row style="padding: 20px 20px 0 20px">
+  <div nz-col nzXs="24" nzSm="24" nzMd="12" nzLg="16">
+    <div style="height: 400px; text-align: center; display: block; margin: 5px">
+      <img class="imgscale" nz-image src="assets/images/bigdata/category/missing.png" />
+    </div>
+    <div style="height: 400px; text-align: center; display: block; margin: 5px">
+      <img class="imgscale" nz-image src="assets/images/bigdata/category/cate1.png" />
+    </div>
+    <div style="height: 400px; text-align: center; display: block; margin: 5px">
+      <img class="imgscale" nz-image src="assets/images/bigdata/category/cate2.png" />
+    </div>
+    <div style="height: 400px; text-align: center; display: block; margin: 5px">
+      <img class="imgscale" nz-image src="assets/images/bigdata/category/cate3.png" />
+    </div>
+    <div style="height: 400px; text-align: center; display: block; margin: 5px">
+      <img class="imgscale" nz-image src="assets/images/bigdata/category/cate4.png" />
+    </div>
+    <div style="height: 400px; text-align: center; display: block; margin: 5px">
+      <img class="imgscale" nz-image src="assets/images/bigdata/category/cate5.png" />
+    </div>
+  </div>
+
+  <div nz-col nzXs="24" nzSm="24" nzMd="8" nzLg="8">
+    <nz-timeline>
+      <nz-timeline-item>
+        <div><h3>缺失值</h3></div>
+        <div style="height: 380px">
+          横坐标为各个影响因素名称（即数据集的列），纵坐标为数据点索引（即数据集的行），黑白条纹为此变量没有缺失值，如果某一变量出现大量条纹，则条纹的纵坐标值代表缺失值发生在该变量所在数据集的行数索引。
+        </div> </nz-timeline-item
+      ><nz-timeline-item>
+        <div><h3>变量分布</h3></div>
+        <div style="height: 700px">
+          <h3>变量分布&箱型图（Feature Distribution & Box Plot）</h3>
+          可以观测出各个变量的分布趋势，如：数据主要集中在什么区间，是否有少量的异常值存在，数据空值的填补，等等。箱型图代表了四分位差（数据25%，50%，75%的点，其中50%为中位数），如果有数据点超出了箱型图的边界，其在统计意义上为异常值。</div
+        >
+      </nz-timeline-item>
+      <nz-timeline-item>
+        <div><h3>线性相关性</h3></div>
+        <div style="height: 380px">
+          <h3>线性相关性（Correlation Plot）</h3>
+          可以观测出各个变量的分布趋势，如：数据主要集中在什么区间，是否有少量的异常值存在，数据空值的填补，等等。箱型图代表了四分位差（数据25%，50%，75%的点，其中50%为中位数），如果有数据点超出了箱型图的边界，其在统计意义上为异常值。</div
+        >
+      </nz-timeline-item>
+      <nz-timeline-item>
+        <div><h3>结果总类分布（分类型）</h3></div>
+        <div style="height: 380px">
+          <h3>结果种类分布（分类型） 绘制分类型结果变</h3>
+          绘制分类型结果变量各独立值数量与比重，对比上采样前后的区别（为了解决类不平衡的问题）。</div
+        >
+      </nz-timeline-item>
+      <nz-timeline-item>
+        <div><h3>清洗后数据集</h3></div>
+        <div style="height: 380px">
+          <h3>清洗后数据集</h3>
+
+          处理缺失值，删除无意义变量，进行特征转换，修改采样数量后的数据集，并保存。</div
+        >
+      </nz-timeline-item>
+      <nz-timeline-item></nz-timeline-item>
+    </nz-timeline>
+  </div>
+
+  <nz-back-top></nz-back-top>
+</div>
+<div nz-row style="padding: 20px 20px 0 20px">
+  <div nz-col nzSpan="8" style="padding: 20px; display: block; text-align: center; margin: auto">
+    <button nz-button nzType="primary" routerLink="/bigdata/categoryinput">上一步</button>
+  </div>
+  <div nz-col nzSpan="8" style="padding: 20px; display: block; text-align: center; margin: auto">
+    <button nz-button nzType="primary" routerLink="/bigdata/categorytuning">下一步</button>
+  </div>
+</div>
